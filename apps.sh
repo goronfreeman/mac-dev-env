@@ -1,63 +1,32 @@
 #!/bin/bash
 # Apps
 apps=(
-  adobe-creative-cloud
-  anvil
+  airmail-beta
+  alfred
   appcleaner
-  asepsis
   atom
-  betterzipql
-  brackets
-  caffeine
-  carbon-copy-cloner
-  cloudup
-  codekit
-  cyberduck
+  bettertouchtool
+  daisydisk
+  dash
   dropbox
-  droplr
-  firefox
-  flash
-  fluid
   flux
-  github-desktop
-  githubpulse
-  google-chrome
-  harvest
-  iterm2
-  keka
-  mailbox
-  miro
-  moom
-  mou
-  namechanger
-  nvalt
-  openoffice
-  qlcolorcode
-  qlimagesize
-  qlmarkdown
-  qlprettypatch
-  qlstephen
-  quicklook-csv
-  quicklook-json
-  screenflick
-  sequel-pro
-  sketch
-  skype
-  slack
-  smcfancontrol
-  sourcetree
+  google-drive
+  google-photos-backup
+  heroku-toolbelt
+  imageoptim
+  istat-menus
+  iterm2-beta
+  kaleidoscope
+  linear
+  mysqlworkbench
+  openemu
+  paw
+  scroll-reverser
   spotify
-  sublime-text3
-  suspicious-package
-  tomighty
-  tower
+  steam
+  the-unarchiver
   transmission
-  transmit
-  unrarx
-  vagrant
-  virtualbox
   vlc
-  webpquicklook
 )
 
 # Install apps to /Applications
