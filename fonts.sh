@@ -1,7 +1,4 @@
 #!/bin/bash
-#Installing fonts
-pretty_print "Installing some caskroom/fonts..."
-brew tap caskroom/fonts
 
 fonts=(
   font-open-sans
@@ -9,6 +6,8 @@ fonts=(
   font-source-code-pro
 )
 
-# install fonts
-pretty_print "Installing the fonts..."
-brew cask install ${fonts[@]}
+# Install fonts
+for i in ${fonts[@]}; do
+  echo Installing $i...
+  brew cask install $i
+done
