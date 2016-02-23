@@ -11,13 +11,12 @@ checkFor() {
   type "$1" &> /dev/null ;
 }
 
-pretty_print "Setting up your dev environment..."
+pretty_print "Setting up your development environment..."
 
 # Set continue to false by default
 CONTINUE=false
 
-pretty_print "Have you read through the script you're about to run and "
-pretty_print "understood that it will make changes to your computer? (y/n)"
+pretty_print "Have you read through the script you're about to run and understood that it will make changes to your computer? (y/n)"
 read -r response
 case $response in
   [yY]) CONTINUE=true
@@ -27,7 +26,7 @@ esac
 
 if ! $CONTINUE; then
   # Check if we're continuing and output a message if not
-  pretty_print "Please go read the script. It only takes a few minutes"
+  pretty_print "Please go read the script. It only takes a few minutes."
   exit
 fi
 
@@ -46,7 +45,7 @@ if [ "$(checkFor pkgutil --pkg-info=com.apple.pkg.CLTools_Executables)" ]; then
 fi
 
 # Oh My Zsh installation
-pretty_print "Installing oh-my-zsh..."
+pretty_print "Installing Oh My Zsh..."
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Clone config files
@@ -69,22 +68,31 @@ pretty_print "Cloning config repos from GitHub..."
 
 # Symlink config files
 pretty_print "Symlinking config files..."
+  pretty_print "Symlinking .gitconfig..."
   ln -s ~/github/dotfiles/gitconfig ~/.gitconfig
 
+  pretty_print "Symlinking .scss-lint.yml..."
   ln -s ~/github/dotfiles/linter_config/scss-lint.yml ~/.scss-lint.yml
 
+  pretty_print "Symlinking .eslintrc..."
   ln -s ~/github/dotfiles/linter_config/eslintrc ~/.eslintrc
 
+  pretty_print "Symlinking .agignore..."
   ln -s ~/github/dotfiles/agignore ~/.agignore
 
+  pretty_print "Symlinking .zshenv..."
   ln -s ~/github/dotfiles/oh_my_zsh/zshenv ~/.zshenv
 
+  pretty_print "Symlinking .zshrc..."
   ln -s ~/github/dotfiles/oh_my_zsh/zshrc ~/.zshrc
 
+  pretty_print "Symlinking alias.zsh..."
   ln -s ~/github/dotfiles/oh_my_zsh/custom/alias.zsh ~/.oh-my-zsh/custom/
 
+  pretty_print "Symlinking fzf.zsh..."
   ln -s ~/github/dotfiles/oh_my_zsh/custom/fzf.zsh ~/.oh-my-zsh/custom/
 
+  pretty_print "Symlinking functions.zsh..."
   ln -s ~/github/dotfiles/oh_my_zsh/functions.zsh ~/.oh-my-zsh/lib/
 
 ###############################################################################
@@ -143,7 +151,7 @@ pretty_print "Installing Neovim..."
 ###############################################################################
 
 pretty_print "Installing fzf..."
-  /usr/local/Cellar/fzf/HEAD/install
+  /usr/local/opt/fzf/install
 
 ###############################################################################
 # Ruby
@@ -166,7 +174,7 @@ pretty_print "Configuring Rubocop with your preferences..."
 pretty_print "Installing Node packages..."
   sh node_packages.sh
 
-pretty_print "Installing atom-sync-settings"
+pretty_print "Installing atom-sync-settings..."
   apm install sync-settings
 
 ###############################################################################
@@ -183,21 +191,15 @@ pretty_print "Installing MySQL launch daemon..."
 # General UI/UX
 ###############################################################################
 
-echo "Would you like to set your computer name (as done via System Preferences >> Sharing)?  (y/n)"
-read -r response
-case $response in
-  [yY])
-      echo "What would you like it to be?"
-      read COMPUTER_NAME
-      sudo scutil --set ComputerName $COMPUTER_NAME --set HostName $COMPUTER_NAME --set LocalHostName $COMPUTER_NAME
-      sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
-      break;;
-  *) break;;
-esac
-
 echo ""
 echo "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+echo ""
+echo "Disable Mission Control shift binding"
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:34:enabled NO" ~/Library/Preferences/com.apple.symbolichotkeys.plist
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:35:enabled NO" ~/Library/Preferences/com.apple.symbolichotkeys.plist
+/usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:37:enabled NO" ~/Library/Preferences/com.apple.symbolichotkeys.plist
 
 ###############################################################################
 # Finder
@@ -219,12 +221,10 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 
-# Set a blazingly fast keyboard repeat rate
-echo "Set a blazingly fast keyboard repeat rate"
+echo "Set a fast keyboard repeat rate"
 defaults write NSGlobalDomain KeyRepeat -int 1
 
-# Set a shorter Delay until key repeat
-echo "Set a shorter Delay until key repeat"
+echo "Set a shorter delay until key repeat"
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 ###############################################################################
