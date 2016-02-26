@@ -166,9 +166,9 @@ pretty_print "Installing gems..."
   sh gems.sh
 
 pretty_print "Configuring Rubocop with your preferences..."
-  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/default.yml > /Users/hbraun/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/default.yml
-  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/disabled.yml > /Users/hbraun/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/disabled.yml
-  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/enabled.yml > /Users/hbraun/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/enabled.yml
+  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/default.yml > ~/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/default.yml
+  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/disabled.yml > ~/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/disabled.yml
+  curl https://gist.githubusercontent.com/goronfreeman/b13d44c9d5c02e689a44/raw/a2f6c26e11081cd82a4b1937f4ac243f610d5bf3/enabled.yml > ~/.gem/ruby/$ruby_version/gems/rubocop-$(rubocop -v)/config/enabled.yml
 
 # TODO: Move to better section
 pretty_print "Installing Node packages..."
